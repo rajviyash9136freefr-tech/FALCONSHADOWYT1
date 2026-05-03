@@ -24,6 +24,52 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Security layer: Prevent context menu, devtools shortcuts, and dragging
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Prevent F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && (e.key.toLowerCase() === 'i' || e.key.toLowerCase() === 'j' || e.key.toLowerCase() === 'c')) || 
+        (e.ctrlKey && e.key.toLowerCase() === 'u') ||
+        (e.metaKey && e.altKey && (e.key.toLowerCase() === 'i' || e.key.toLowerCase() === 'j' || e.key.toLowerCase() === 'u')) // Mac support
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    const handleDragStart = (e: DragEvent) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('dragstart', handleDragStart);
+
+    // Optional: detect devtools opening (basic) -> redirect or warn
+    const detectDevTools = () => {
+      const threshold = 160;
+      const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+      const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+      if (widthThreshold || heightThreshold) {
+        console.warn("%cSecurity Warning: DevTools detected.", "color: red; font-size: 20px; font-weight: bold;");
+      }
+    };
+    
+    window.addEventListener('resize', detectDevTools);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('dragstart', handleDragStart);
+      window.removeEventListener('resize', detectDevTools);
+    };
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
