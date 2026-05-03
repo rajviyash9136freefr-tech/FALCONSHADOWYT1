@@ -27,7 +27,8 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-brand-dark overflow-x-hidden selection:bg-brand-red selection:text-white">
+      <div className="flex flex-col min-h-screen bg-brand-dark overflow-x-hidden">
+        <div className="atmosphere-bg" />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,7 +38,7 @@ export default function App() {
         <Footer />
         
         {/* Global Motion Overlay Effect */}
-        <div className="fixed inset-0 pointer-events-none z-[100] border-[20px] border-brand-red/5" />
+        <div className="fixed inset-0 pointer-events-none z-[100] border-[8px] border-brand-red/[0.03]" />
       </div>
     </Router>
   );

@@ -38,32 +38,32 @@ export default function Navbar() {
     { name: 'Community', path: '/#community' },
     { name: 'About', path: '/about' },
     { name: 'Donate', path: 'https://www.paypal.com/paypalme/FalconShadowYT', external: true },
-    { name: 'Contact Me', path: '/work-with-me', highlight: true },
+    { name: 'Contact', path: '/work-with-me', highlight: true },
   ];
 
   return (
     <nav 
       className={cn(
-        "fixed top-4 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-5xl z-50 transition-all duration-700 px-6 py-3 rounded-2xl sm:rounded-full",
+        "fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 transition-all duration-700 rounded-full",
         isScrolled 
-          ? "bg-black/60 backdrop-blur-3xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] py-2" 
-          : "bg-transparent",
+          ? "bg-black/80 backdrop-blur-3xl border border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.8)] py-3 px-6" 
+          : "bg-transparent py-4 px-6",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-12"
       )}
     >
       <div className="flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
-          <div className="w-8 h-8 relative shrink-0">
-            <div className="absolute inset-0 bg-brand-red blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
-            <Youtube className="text-brand-red relative z-10" size={24} />
+        <Link to="/" className="flex items-center gap-4 group">
+          <div className="w-10 h-10 relative shrink-0 flex items-center justify-center bg-white/[0.02] border border-white/10 rounded-full group-hover:border-brand-red/50 transition-colors">
+            <div className="absolute inset-0 bg-brand-red blur-xl opacity-0 group-hover:opacity-30 transition-opacity rounded-full" />
+            <Youtube className="text-brand-red relative z-10" size={20} />
           </div>
-          <span className="font-display text-lg sm:text-xl tracking-[-0.03em] font-black text-white">
-            FALCON<span className="text-brand-red">SHADOW</span>YT
+          <span className="font-display text-xl sm:text-2xl tracking-[-0.04em] font-light text-white uppercase hidden sm:block">
+            FALCON<span className="text-brand-red font-black">SHADOWYT</span>
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-5">
+        <div className="hidden md:flex items-center gap-1 sm:gap-2">
           {navLinks.map((link) => (
             link.external ? (
               <a
@@ -71,7 +71,7 @@ export default function Navbar() {
                 href={link.path}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[9px] font-bold uppercase tracking-[0.25em] transition-all text-white/30 hover:text-white"
+                className="px-5 py-2.5 text-[9px] font-bold uppercase tracking-[0.2em] transition-all text-white/50 hover:text-white rounded-full hover:bg-white/[0.03]"
               >
                 {link.name}
               </a>
@@ -80,10 +80,10 @@ export default function Navbar() {
                 key={link.name}
                 to={link.path}
                 className={cn(
-                  "text-[9px] font-bold uppercase tracking-[0.25em] transition-all",
+                  "px-5 py-2.5 text-[9px] font-bold uppercase tracking-[0.2em] transition-all rounded-full",
                   link.highlight 
-                    ? "glossy-red text-white px-4 py-1.5 rounded-full hover:scale-105" 
-                    : "text-white/30 hover:text-white"
+                    ? "bg-white text-black hover:bg-brand-red hover:text-white" 
+                    : "text-white/50 hover:text-white hover:bg-white/[0.03]"
                 )}
               >
                 {link.name}
@@ -94,10 +94,10 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-white"
+          className="md:hidden text-white p-2 rounded-full hover:bg-white/5 transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -108,7 +108,7 @@ export default function Navbar() {
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            className="absolute top-[110%] left-0 w-full bg-black/90 backdrop-blur-3xl border border-white/10 rounded-[2rem] p-8 md:hidden flex flex-col gap-6 shadow-2xl z-[100]"
+            className="absolute top-[120%] left-0 w-full bg-black/95 backdrop-blur-3xl border border-white/5 rounded-[2rem] p-8 md:hidden flex flex-col gap-6 shadow-[0_40px_80px_rgba(0,0,0,0.8)] z-[100]"
           >
             {navLinks.map((link) => (
               link.external ? (
@@ -117,7 +117,7 @@ export default function Navbar() {
                   href={link.path}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl font-display font-black uppercase tracking-tight text-white/40 hover:text-white transition-colors"
+                  className="text-xl font-display font-light uppercase tracking-widest text-white/50 hover:text-white transition-colors"
                 >
                   {link.name}
                 </a>
@@ -127,8 +127,8 @@ export default function Navbar() {
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "text-2xl font-display font-black uppercase tracking-tight transition-colors",
-                    link.highlight ? "text-brand-red hover:text-brand-red/80" : "text-white/40 hover:text-white"
+                    "text-xl font-display uppercase tracking-widest transition-colors",
+                    link.highlight ? "text-brand-red font-black text-glow-red" : "text-white/50 hover:text-white font-light"
                   )}
                 >
                   {link.name}
