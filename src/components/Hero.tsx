@@ -67,7 +67,7 @@ export default function Hero() {
       {/* Stats Quick Look - Desktop/Tablet Only */}
       <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-full max-w-5xl px-12 hidden md:flex items-center justify-between border-t border-white/5 pt-8">
         {[
-          { label: 'Subscribers', value: '10K+' },
+          { label: 'Subscribers', value: '12.1K' },
           { label: 'Ratio', value: '14.2%' },
           { label: 'Network', value: '#124' },
         ].map((stat) => (

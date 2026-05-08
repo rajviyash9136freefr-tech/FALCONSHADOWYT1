@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Users, Eye, TrendingUp, Award } from 'lucide-react';
 
 const stats = [
-  { label: 'Subscribers', value: '10.2K', icon: Users, color: 'text-brand-red' },
+  { label: 'Subscribers', value: '12.1K', icon: Users, color: 'text-brand-red' },
   { label: 'Total Views', value: '4,041,139', icon: Eye, color: 'text-white' },
   { label: 'Avg Engagement', value: '14.2%', icon: TrendingUp, color: 'text-white' },
   { label: 'Strategic Intel', value: 'ACTIVE', icon: Award, color: 'text-brand-red' },
