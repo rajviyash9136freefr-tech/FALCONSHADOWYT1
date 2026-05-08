@@ -15,6 +15,12 @@
     @apply text-white font-sans antialiased text-sm min-h-screen relative bg-brand-dark selection:bg-brand-red selection:text-white select-none;
   }
 
+  @media (min-width: 768px) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-extrabold tracking-tight;
   }

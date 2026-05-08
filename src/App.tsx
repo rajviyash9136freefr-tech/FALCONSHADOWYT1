@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import WorkWithMe from './pages/WorkWithMe';
 import AboutPage from './pages/AboutPage';
+import Crosshair from './components/Crosshair';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -73,7 +74,8 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-brand-dark overflow-x-hidden">
+      <Crosshair />
+      <div className="flex flex-col min-h-screen bg-brand-dark overflow-x-hidden md:cursor-none">
         <div className="atmosphere-bg" />
         <Navbar />
         <Routes>
